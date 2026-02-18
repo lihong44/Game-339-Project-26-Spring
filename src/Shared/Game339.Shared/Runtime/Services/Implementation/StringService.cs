@@ -23,7 +23,7 @@ namespace Game339.Shared.Services.Implementation
         {
             if (input == null)
                 throw new System.ArgumentNullException(nameof(input));
-            var words = input.Split(' ');
+            var words = input.Trim().Split(' ');
             System.Array.Reverse(words);
             var output = string.Join(" ", words);
             _log.Info($"{nameof(StringService)}.{nameof(ReverseWords)} - {nameof(input)}: {input} - {nameof(output)}: {output}");
