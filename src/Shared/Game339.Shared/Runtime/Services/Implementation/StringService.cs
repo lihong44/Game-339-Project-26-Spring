@@ -23,6 +23,10 @@ namespace Game339.Shared.Services.Implementation
         {
             if (input == null)
                 throw new System.ArgumentNullException(nameof(input));
+            
+            if (string.IsNullOrWhiteSpace(input))   // ← handles " " and ""
+                return input;
+            
             var words = input.Trim().Split(' ');
             System.Array.Reverse(words);
             var output = string.Join(" ", words);
