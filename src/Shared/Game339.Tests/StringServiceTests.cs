@@ -32,4 +32,23 @@ public class StringServiceTests
         // Act & Assert
         Assert.Throws<System.ArgumentNullException>(() => _svc.Reverse(null));
     }
+
+    [TestCase("", "")]
+    [TestCase(" ", " ")]
+    [TestCase("hello", "hello")]
+    [TestCase("Hello World", "World Hello")]
+    [TestCase("The quick brown fox", "fox brown quick The")]
+    [TestCase(" hello world ", "world hello")]
+    [TestCase("a b c", "c b a")]
+    public void ReverseWords_CommonCases(string input, string expected)
+    {
+        var actual = _svc.ReverseWords(input);
+        Assert.That(actual, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void ReverseWords_NullString_ThrowsArgumentNullException()
+    {
+        Assert.Throws<System.ArgumentNullException>(() => _svc.ReverseWords(null));
+    }
 }
